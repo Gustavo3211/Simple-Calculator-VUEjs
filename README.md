@@ -1,5 +1,27 @@
-# Vue 3 + TypeScript + Vite
+# Simple Vue 3 Calculator
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Just a simple project to learn how to use VUE.js
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Tech
+
+* Vue 3 (Composition API)
+* TypeScript
+
+## Installation and Execution
+
+To run this project locally, follow the steps below:
+
+1.  **Clone the repository**
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+    The application will be available at `http://localhost:5173/` (or another port indicated by Vite).
