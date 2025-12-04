@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+
 /* Just a simple screen that displays a string (easier for my aplication tho isnt good for the future when i try to make complex calculation)*/
 const props = defineProps({
   valor: { type: String, default: "0" }

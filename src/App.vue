@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Tela from './components/Screen.vue';
-import { ref, watch } from 'vue'
+import { ref} from 'vue'
 
 
 /* VAR DEFINITION */
@@ -8,7 +8,9 @@ const num = ref('0');
 const operation = ref('');
 
 /* HANDLE THE DIGIT OPERATION */
-const addDigit = (digit: string) => {
+const addDigit = (event: MouseEvent) => {
+  const target = event.target as HTMLButtonElement;
+  const digit = target.value;
 
   /*handle the override after showing results */
   if (showingResult.value === true){
@@ -77,12 +79,14 @@ const display = (numero: string) => {
 
 /* handle the basic math operations */
 
-const handleoperator = (op: string) => {
+const handleoperator = (event: MouseEvent) => {
+  const target = event.target as HTMLButtonElement;
+  const op = target.value;
 
   /* check if is the first time that user has inputted the operator */
   if (operation.value === '') {
     operation.value = op;
-    addDigit(op);
+    addDigit(event);
     return;
   }
 
@@ -90,7 +94,7 @@ const handleoperator = (op: string) => {
   display(num.value);
   showingResult.value = false;
   operation.value = op;
-  addDigit(op);
+  addDigit(event);
 };
 
 const showingResult = ref(false);
@@ -109,23 +113,23 @@ const showingResult = ref(false);
       <div class="ButtonsWrapper">
 
           <div class="botao-num">
-                  <button @click="addDigit($event.target.value)" value="7">7</button>
-                  <button @click="addDigit($event.target.value)" value="8">8</button>
-                  <button @click="addDigit($event.target.value)" value="9">9</button>
-                  <button @click="addDigit($event.target.value)" value="4">4</button>
-                  <button @click="addDigit($event.target.value)" value="5">5</button>
-                  <button @click="addDigit($event.target.value)" value="6">6</button>
-                  <button @click="addDigit($event.target.value)" value="1">1</button>
-                  <button @click="addDigit($event.target.value)" value="2">2</button>
-                  <button @click="addDigit($event.target.value)" value="3">3</button>
-                  <button @click="addDigit($event.target.value)" value="0">0</button>
-          </div>
-          <div class="botao-side-l">
-                  <button @click="num='0';operation=''">AC</button>
-                  <button @click="handleoperator($event.target.value)" value="+">+</button>
-                  <button @click="handleoperator($event.target.value)" value="-">-</button>
-                  <button @click="handleoperator($event.target.value)" value="/">/</button>
-                  <button @click="handleoperator($event.target.value)" value="x">x</button>
+                    <button @click="addDigit($event)" value="7">7</button>
+                    <button @click="addDigit($event)" value="8">8</button>
+                    <button @click="addDigit($event)" value="9">9</button>
+                    <button @click="addDigit($event)" value="4">4</button>
+                    <button @click="addDigit($event)" value="5">5</button>
+                    <button @click="addDigit($event)" value="6">6</button>
+                    <button @click="addDigit($event)" value="1">1</button>
+                    <button @click="addDigit($event)" value="2">2</button>
+                    <button @click="addDigit($event)" value="3">3</button>
+                    <button @click="addDigit($event)" value="0">0</button>
+            </div>
+            <div class="botao-side-l">
+                    <button @click="num='0';operation=''">AC</button>
+                    <button @click="handleoperator($event)" value="+">+</button>
+                    <button @click="handleoperator($event)" value="-">-</button>
+                    <button @click="handleoperator($event)" value="/">/</button>
+                    <button @click="handleoperator($event)" value="x">x</button>
                   <button @click="display(num)">=</button>
           </div>
 
