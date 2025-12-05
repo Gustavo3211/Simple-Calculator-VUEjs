@@ -155,13 +155,19 @@ const showingResult = ref(false);
 .Container {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 180px;
 }
 .botoes{
   display: flex;
 }
 .Screen {
+  width: 100%;
   margin-bottom: 10px;
+  /* --- AQUI ESTÁ A MUDANÇA --- */
+  word-break: break-all; /* Força o número a quebrar para a linha de baixo */
+  height: auto;          /* Permite que a altura da tela cresça */
+  min-height: 40px;      /* Define uma altura mínima para quando estiver vazia */
+  /* --------------------------- */
 }
 
 
