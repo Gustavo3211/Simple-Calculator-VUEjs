@@ -40,40 +40,37 @@ const display = (numero: string) => {
   var num1: number | any =  0;
   var num2: number | any =  0;
 
-  /* define the num1 and num2 by string splitting */
-  part = numero.split(operation.value)
+  /* define the num1 and num2 by checking the operator position (fix for negative numbers) */
+  let operatorIndex = operation.value === '-'? numero.lastIndexOf('-') : numero.indexOf(operation.value)
+
+  num1 = Number(numero.slice(0,operatorIndex)) /* before operator */
+  num2 = Number(numero.slice(operatorIndex + 1)) /* after operator */
+
+  /* debug */
+  console.log(num1)
+  console.log(operation.value)
+  console.log(num2)
 
 
-  if ( part.length === 2 ){
-    num1 = Number(part[0]) /* before operator */
-    num2 = Number(part[1]) /* after operator */
-
-    /* debug */
-    console.log(num1)
-    console.log(operation.value)
-    console.log(num2)
-
-
-    /* operations */
-    if (operation.value === "+"){
-      total.value = num1 + num2
-    }
-    if (operation.value === "-"){
-      total.value = num1 - num2
-    }
-    if (operation.value === "x"){
-      total.value = num1 * num2
-    }
-    if (operation.value === "/"){
-      total.value = num1 / num2
-    }
-    /* DISPLAY RESULT */
-
-    totalString.value = String(total.value)
-    num.value = totalString.value
-    showingResult.value = true;
-    console.log(total.value)
+  /* operations */
+  if (operation.value === "+"){
+    total.value = num1 + num2
   }
+  if (operation.value === "-"){
+    total.value = num1 - num2
+  }
+  if (operation.value === "x"){
+    total.value = num1 * num2
+  }
+  if (operation.value === "/"){
+    total.value = num1 / num2
+  }
+  /* DISPLAY RESULT */
+
+  totalString.value = String(total.value)
+  num.value = totalString.value
+  showingResult.value = true;
+  console.log(total.value)
 }
 
 
