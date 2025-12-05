@@ -36,7 +36,6 @@ const display = (numero: string) => {
   var totalString = ref('0');
 
   /* calculation  */
-  var part: string | any[] = [];
   var num1: number | any =  0;
   var num2: number | any =  0;
 
