@@ -17,8 +17,11 @@ const props = defineProps({
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .container{
-    font-family: "Orbitron";
+    font-family: "Press Start 2P"
 }
+
+
 </style>

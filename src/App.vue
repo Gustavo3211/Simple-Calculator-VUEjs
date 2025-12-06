@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import Tela from './components/Screen.vue';
-import { ref} from 'vue'
+import { ref } from 'vue'
 
 
 /* VAR DEFINITION */
 const num = ref('0');
 const operation = ref('');
+
+
 
 /* HANDLE THE DIGIT OPERATION */
 const addDigit = (event: MouseEvent) => {
@@ -98,16 +100,23 @@ const showingResult = ref(false);
 </script>
 
 <template>
+<div class="Table">
 
 <div class="Calculator">
   <div class="Container">
-
       <div class="Screen">
         <tela :valor="num"></tela>
+        <span v-if="num.length <= 15"style="color: transparent;justify-content: end !important;" class="material-symbols-outlined">stat_minus_1</span>
+        
+        <span v-if="num.length >= 15"style="color: #3b423a;justify-content: end !important;" class="material-symbols-outlined">stat_minus_2</span>
       </div>
 
-      <div class="ButtonsWrapper">
+      <div class="Button-top">
+          <a target="_blank" href="https://github.com/Gustavo3211/Simple-Calculator-VUEjs"><button class="button-fn"><span class="material-symbols-outlined">hub</span>git</button></a>
+          <a target="_blank" href="https://polyhaven.com/a/plank_flooring_04"><button><span class="material-symbols-outlined">texture</span>bg</button></a>
+        </div>
 
+      <div class="ButtonsWrapper">
           <div class="botao-num">
                     <button @click="addDigit($event)" value="7">7</button>
                     <button @click="addDigit($event)" value="8">8</button>
@@ -119,6 +128,9 @@ const showingResult = ref(false);
                     <button @click="addDigit($event)" value="2">2</button>
                     <button @click="addDigit($event)" value="3">3</button>
                     <button @click="addDigit($event)" value="0">0</button>
+                    <button @click="addDigit($event)" value="00">00</button>
+                    <button @click="addDigit($event)" value=",">,</button>
+                
             </div>
             <div class="botao-side-l">
                     <button @click="num='0';operation=''">AC</button>
@@ -128,71 +140,137 @@ const showingResult = ref(false);
                     <button @click="handleoperator($event)" value="x">x</button>
                   <button @click="display(num)">=</button>
           </div>
-
       </div>
   </div>
-
 </div>
 
+</div>
 </template>
 
 <style scoped>
-.Calculator {
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+.Table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center; /* horizontal */
-  align-items: center;     /* vertical */
-  
+  background-image: url(https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plank_flooring_04/plank_flooring_04_diff_1k.jpg);
+  background-repeat: repeat;
 }
 
+.Calculator {
+  font-size: 2vmin;
+  width: 20em;
+  max-width: 20em;
+  height: 45em;
+  max-height: 45em;
+  border: 0.3em solid #a1c405;
+  background-color: rgb(231, 231, 231);
+  box-shadow: 0.5em 0.5em 1em rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  border-radius: 1em;
+}
+.Button-top {
+  margin-bottom: 0.3em;
+  display: flex;
+  gap: 0.5em;
+  flex-shrink: 0;
+  grid-template-columns: repeat(3, 4em);
+}
+.Button-top span{
+  font-size: 1.5em;
+}
 .Container {
-  
   display: flex;
   flex-direction: column;
+  width: 18em;
 }
 
-.Container {
-  display: flex;
-  flex-direction: column;
-  width: 180px;
-}
-.botoes{
+.botoes {
   display: flex;
 }
+
 .Screen {
   width: 100%;
-  margin-bottom: 10px;
-  /* --- AQUI ESTÁ A MUDANÇA --- */
-  word-break: break-all; /* Força o número a quebrar para a linha de baixo */
-  height: auto;          /* Permite que a altura da tela cresça */
-  min-height: 40px;      /* Define uma altura mínima para quando estiver vazia */
-  /* --------------------------- */
+  margin-bottom: 1em;
+  word-break: break-all;
+  height: 4em;
+  min-height: 4em;
+  max-height: 4em;
+  overflow-y: auto;
+  background-color: #6d7659;
+  color: #3b423a;
+  padding: 0.5em;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: flex-start;
+  border: 3px solid rgba(231, 231, 231, 0.685);
+  border-radius: 0.5em;
 }
+
+
 
 
 .ButtonsWrapper {
   display: flex;
-  gap: 10px;
+  gap: 0.5em;
   align-items: flex-start;
 }
 
 .botao-num {
   display: grid;
-  grid-template-columns: repeat(3, 40px);
-  gap: 5px;
-  flex-shrink: 0;  
+  grid-template-columns: repeat(3, 4em);
+  gap: 0.5em;
+  flex-shrink: 0;
+
 }
 
 .botao-side-l {
+
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.5em;
   flex-shrink: 0;
 }
 
 button {
-  width: 40px;
-  height: 40px;
+  font-family: "Quantico";
+  width: 4em;
+  height: 4em;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 2em;
+  border: none;
 }
+
+button:active {
+  filter: brightness(1.3); /* Efeito de clique */
+}
+
+.botao-num button {
+  background-color: var(--btn-num-bg);
+  color: var(--btn-num-text);
+}
+
+.botao-side-l button {
+  background-color: var(--btn-op-bg);
+  color: var(--btn-op-text);
+}
+
+.botao-side-l button:first-child {
+  background-color: var(--btn-ac-bg);
+  color: var(--btn-ac-text);
+}
+
+.button-fn{
+  background-color: #104C35 !important;
+}
+
+
 </style>
