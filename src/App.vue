@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import Tela from './components/Screen.vue';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
+onMounted(() => {
+  num.value = 'Hi! :)'
+});
 
 /* VAR DEFINITION */
-const num = ref('0');
+const num = ref('');
 const operation = ref('');
 
 
@@ -16,13 +19,13 @@ const addDigit = (event: MouseEvent) => {
 
   /*handle the override after showing results */
   if (showingResult.value === true){
-    num.value = digit
+    num.value = num.value + digit;
     showingResult.value = false
 
   } else {
 
     /* handle the override for the first digit */
-    if (num.value === '0'){
+    if (num.value === '' || num.value === 'Hi! :)'){
       num.value = digit;
     }else{
         num.value = num.value + digit;
@@ -98,6 +101,9 @@ const handleoperator = (event: MouseEvent) => {
 
 const showingResult = ref(false);
 
+
+
+
 </script>
 
 <template>
@@ -134,7 +140,7 @@ const showingResult = ref(false);
                 
             </div>
             <div class="botao-side-l">
-                    <button @click="num='0';operation=''">AC</button>
+                    <button @click="num='';operation=''">AC</button>
                     <button @click="handleoperator($event)" value="+">+</button>
                     <button @click="handleoperator($event)" value="-">-</button>
                     <button @click="handleoperator($event)" value="/">/</button>
@@ -201,12 +207,11 @@ const showingResult = ref(false);
   width: 100%;
   margin-bottom: 1em;
   word-break: break-all;
+  background-color: #6d7659;
   height: 4em;
   min-height: 4em;
   max-height: 4em;
   overflow-y: auto;
-  background-color: #6d7659;
-  color: #3b423a;
   padding: 0.5em;
   font-size: 1.5em;
   display: flex;
