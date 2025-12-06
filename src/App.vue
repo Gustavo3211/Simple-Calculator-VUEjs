@@ -70,6 +70,7 @@ const display = (numero: string) => {
 
   totalString.value = String(total.value)
   num.value = totalString.value
+  operation.value = ""
   showingResult.value = true;
   console.log(total.value)
 }
