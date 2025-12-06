@@ -1,37 +1,40 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+
+  --bg-fundo-site: #222;
+  --bg-calculadora: #000000;
+  
+  --bg-screen: #000000;
+  --text-screen: #ffffff;
+
+  --btn-num-bg: #a1c405;
+  --btn-num-text: #ffffff;
+
+  --btn-op-bg: #3d969b; 
+  --btn-op-text: #ffffff;
+  
+  --btn-ac-bg: #c93123; 
+  --btn-ac-text: #ffffff;
+
+
+
 }
-html {
-  height: 100%; /* Define o tamanho do Documento HTML */
+
+html{
   overflow: hidden;
 }
-
-html {
-  transform: scale(2);
+body, html {
+  margin: 0;
+  padding: 0;
+  scrollbar-color: #3b423a #6d7659 !important; 
+  scrollbar-width: auto;
 }
-
-
-@media (max-width: 600px) {
-  html {
-    transform: scale(1.3);
-  }
-}
-
-@media (max-width: 450px) {
-  html {
-    transform: scale(1);
-  }
+* {
+  box-sizing: border-box;
 }
